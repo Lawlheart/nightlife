@@ -36,3 +36,36 @@
 .navbar-text {
   margin-left: 15px;
 }
+
+#search-group {
+  max-width: 400px;
+  margin:20px auto;
+}
+
+input.form-control[type=text] {
+  background-color: #000;
+  color:#fff;
+}
+main {
+  margin:40px auto;
+}
+.well {
+  padding:10px;
+}
+.img-div {
+  height:100px;
+  width:100px;
+  float:left;
+}
+.title-div {
+  display:block;
+  padding-left:120px;
+  width:calc(100%-120px);
+}
+.title-div h2 {
+  margin: 10px 0
+}
+.content-div {
+  margin-top:20px;
+  margin-bottom:20px;
+}

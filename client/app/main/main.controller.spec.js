@@ -26,10 +26,10 @@ describe('Controller: MainCtrl', function () {
       expect(scope.awesomeThings.length).toBe(4);
     });
 
-  describe('The yelp function', function() {
-    it('should return something', function() {
-      expect(scope.yelp(5)).toBe(5);
-    });
-  })
+  // describe('The yelp function', function() {
+  //   it('should return something', function() {
+  //     expect(scope.yelp(5)).toBe(5);
+  //   });
+  // })
 
 });

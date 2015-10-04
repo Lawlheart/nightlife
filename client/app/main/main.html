@@ -12,6 +12,44 @@
   </div>
 </header>
 
+<main class="container" ng-switch="step">
+  <div class="text-center" ng-switch-when="1">
+    <h1>Search</h1>
+    <form role="form" id="search-group" >
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input name="location" type="text" ng-model="location" class="form-control">
+
+        <label for="term">Search Term</label>
+        <input name="term" type="text" ng-model="term" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="button" class="btn btn-success form-control" value="Submit" ng-click="yelp(location, term)" ng-disabled="!location || !term">
+      </div>
+    </form>
+  </div>
+  <div ng-switch-when="2">
+    <div class="business well" ng-repeat="business in businesses">
+      <div class="img-div">
+        <img ng-src="{{business.image_url}}" alt="" class="">
+      </div>
+      <div class="title-div">
+        <h2>{{business.name}}</h2>
+        <p>{{business.location.display_address.join(", ")}}</p>
+      </div>
+      <div class="content-div">
+        <p>{{business.snippet_text}}</p>
+        <button class="btn btn-primary pull-right" ng-click="attend(business.id, business.going, $index)" ng-disabled="!isLoggedIn()" ng-show="!business.attending">GOING {{business.going}}</button>
+        <button class="btn btn-danger pull-right" ng-click="cancel(business.id, business.going, $index)" ng-disabled="!isLoggedIn() || business.going < 1" ng-show="business.attending">CANCEL {{business.going}}</button>
+        <p><img ng-src="{{business.rating_img_url}}" alt=""> ({{business.review_count}})</p>
+      
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
 
 
 <footer class="footer">

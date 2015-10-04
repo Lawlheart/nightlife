@@ -1,8 +1,13 @@
+
+var express = require('express');
 var oauthSignature = require('oauth-signature');
 var n = require('nonce')();
 var request = require('request');
 var qs = require('querystring');
 var _ = require('lodash');
+
+var router = express.Router();
+
 
 /* Function for yelp call
  * ------------------------
@@ -38,5 +43,11 @@ var request_yelp = function(set_parameters, callback) {
 	});
 
 };
+router.get('/', function(request, response) {
+	var query = request.query
+	request_yelp(query, function(err, res, body) {
+		response.json(body);
+	})
+})
 
-request_yelp();
+module.exports = router;
