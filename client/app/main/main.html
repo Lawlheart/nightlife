@@ -2,7 +2,7 @@
   
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>NightLife</h1>
+    <h1>night | Life</h1>
     <p class="lead">powered by</p>
     <img src="assets/images/yeoman.png" alt="I'm Yeoman" class="powered-by">
     <img src="assets/images/mongodb.png" alt="mongoDB logo" class="powered-by">
@@ -11,7 +11,6 @@
     <img src="assets/images/node.png" alt="nodeJS logo" class="powered-by">
   </div>
 </header>
-
 <main class="container" ng-switch="step">
   <div class="text-center" ng-switch-when="1">
     <h1>Search</h1>
@@ -29,6 +28,7 @@
     </form>
   </div>
   <div ng-switch-when="2">
+    <button class="btn btn-success" ng-click="$apply()">Refresh</button>
     <div class="business well" ng-repeat="business in businesses">
       <div class="img-div">
         <img ng-src="{{business.image_url}}" alt="" class="">
@@ -39,8 +39,9 @@
       </div>
       <div class="content-div">
         <p>{{business.snippet_text}}</p>
-        <button class="btn btn-primary pull-right" ng-click="attend(business.id, business.going, $index)" ng-disabled="!isLoggedIn()" ng-show="!business.attending">GOING {{business.going}}</button>
-        <button class="btn btn-danger pull-right" ng-click="cancel(business.id, business.going, $index)" ng-disabled="!isLoggedIn() || business.going < 1" ng-show="business.attending">CANCEL {{business.going}}</button>
+        <button class="btn btn-primary pull-right" ng-click="attend(business.id, business.going, $index)" ng-disabled="!isLoggedIn() || plans === undefined" ng-show="plans === undefined || plans.indexOf(business.id) < 0">GOING {{business.going}}</button>
+        <button class="btn btn-danger pull-right" ng-click="cancel(business.id, business.going, $index)" ng-disabled="!isLoggedIn()" ng-show="plans.indexOf(business.id) >= 0">CANCEL {{business.going}}</button>
+        <button class="btn btn-danger pull-right" ng-click="open(business.url)">View on Yelp</button>
         <p><img ng-src="{{business.rating_img_url}}" alt=""> ({{business.review_count}})</p>
       
       </div>
