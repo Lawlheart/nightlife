@@ -11,6 +11,7 @@
     <img src="assets/images/node.png" alt="nodeJS logo" class="powered-by">
   </div>
 </header>
+
 <main class="container" ng-switch="step">
   <div class="text-center" ng-switch-when="1">
     <h1>Search</h1>
@@ -28,7 +29,7 @@
     </form>
   </div>
   <div ng-switch-when="2">
-    <button class="btn btn-success" ng-click="$apply()">Refresh</button>
+    <button class="btn btn-default btn-block" ng-click="resetSearch()">New Search</button>
     <div class="business well" ng-repeat="business in businesses">
       <div class="img-div">
         <img ng-src="{{business.image_url}}" alt="" class="">

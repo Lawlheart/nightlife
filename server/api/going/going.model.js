@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var GoingSchema = new Schema({
   _id: String,
+  businessId: String,
   attending: Number
 });
 
